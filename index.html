@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array concepts in Javascript</title>
+</head>
+<body>
+    <script>
+        // 1. Rotating  an Array
+        function rotateLeft(arr, positions) {
+      let len = arr.length;
+      let effectiveRotations = positions % len;
+       if (effectiveRotations === 0) return arr; 
+
+     let rotatedArray = arr.slice(effectiveRotations).concat(arr.slice(0, effectiveRotations));
+      return rotatedArray;
+}
+     let array = [1, 2, 3, 4, 5];
+    let rotatedLeft = rotateLeft(array, 2);
+     console.log("Array rotated left by 2 positions:", rotatedLeft);
+
+
+        // 2.Generating the Array in the range.
+        function generateRangeArray(start, end) {
+  let array = [];
+  for (let i = start; i <= end; i++) {
+    array.push(i);
+  }
+  return array;
+}
+let result = generateRangeArray(1, 10);
+console.log(result); 
+
+
+        // 3.Finding the Longest String in the Array.
+        function findLongestString(arr) {
+  if (arr.length === 0) return null; // Handle empty array case
+
+  let longestString = arr[0]; // Initialize with the first string
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].length > longestString.length) {
+      longestString = arr[i];
+    }
+  }
+  return longestString;
+}
+let strings = ["apple", "banana", "kiwi", "strawberry", "orange"];
+let longest = findLongestString(strings);
+console.log("Longest string:", longest); 
+
+
+
+        // 4.Array of Object Sorting.
+        let books = [
+  { title: "Book A", author: "Author X", price: 20 },
+  { title: "Book B", author: "Author Y", price: 15 },
+  { title: "Book C", author: "Author X", price: 25 },
+  { title: "Book D", author: "Author Z", price: 18 }
+];
+        // Sorting by author alphabetically, and then by price ascending
+books.sort((a, b) => {
+  // Compare authors alphabetically
+  if (a.author < b.author) return -1;
+  if (a.author > b.author) return 1;
+  return a.price - b.price;
+});
+console.log("Books sorted by author and price:");
+console.log(books);
+
+
+        // 5.Creating a new Array with a given length.
+        let length = 5;
+let newArray = new Array(length);
+console.log(newArray); 
+
+
+        //6.converting Array of Object to an Array.
+
+// Example array of objects
+let arrayOfObjects = [
+    { id: 1, name: 'Alice', age: 30 },
+    { id: 2, name: 'Bob', age: 25 },
+    { id: 3, name: 'Charlie', age: 35 }
+];
+
+// Extracting 'name' and 'age' properties from each object
+let newArra = arrayOfObjects.map(obj => {
+    return { name: obj.name, age: obj.age };
+});
+
+console.log(newArra);
+        
+
+    </script>
+</body>
+</html>
